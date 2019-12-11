@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar ui menu secondary">
-    <a className="item"><i className="fa fa-code"></i>Devconnecter</a>  
+    <Link to='/' className="item"><i className="fa fa-code"></i>Devconnecter</Link>  
     <div className="right menu">
         <div className="item">
         <Link to="/" className="active item">Devloper</Link>

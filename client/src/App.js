@@ -11,9 +11,11 @@ const App = () =>
   <Router>
      <Fragment>
       <Navbar/>
+      <Switch>
       <Route exact path='/' component={Landing}/>
-      <Route exact path='/login' component={Login}/>
+      <Route  path='/login' component={Login}/>
       <Route exact path='/register' component={Register}/>
+      </Switch>
     </Fragment>
   </Router>
    
