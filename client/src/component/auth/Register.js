@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import { Button,Header,Form } from 'semantic-ui-react';
 
 const Register = () => {
     const [formData,setFormData] = useState({name:'',email:'',password:'',password2: ''});
@@ -6,51 +7,52 @@ const Register = () => {
     const {name,email,password,password2} = formData;
 
     const onChange = (e) =>{
-        setFormData
+        
     }
     return (
         <div className="ui container">
-            <h1 className="ui teal header">Sing Up</h1>
-            <h3 className="ui blue text"><i className="fa fa-user"/>Create Your Account</h3>
-            <form className="ui form">
-                <div className="field">
-                    <input  
-                        type="text"
+            <Header as='h1' color='teal'>Sing Up</Header> 
+            <Header as='h1' color='blue'><i className="fa fa-user"/>Create Your Account</Header>
+            <Form>
+                <Form.Field>
+                    <input 
+                        placeholder='Name' 
                         name="name" 
-                        placeholder="Name" 
                         value={name}
+                        onChange={onChange}
                         required 
                     />
-                </div>
-                <div className="field">
-                    <input
+                </Form.Field>
+                <Form.Field>
+                    <input 
+                        placeholder="Email Address"
                         type="email"
                         name="email" 
-                        placeholder="Email Address"
-                        value={email} 
+                        value={email}
+                        onChange={onChange} 
                         required 
                     />
-                    <small>This site uses Gravatar so if you want a profile image,use a Gravatar email</small>
-                </div>
-                <div className="field">
+                </Form.Field>
+                <Form.Field>
                     <input
+                        placeholder="Password" 
                         type="password"
                         name="password" 
-                        placeholder="Password"
                         value={password}
                         onChange={onChange}
-                     />
-                </div>
-                <div className="field">
-                    <input
-                        type="password"
-                        name="password2"
-                        placeholder="confirm password"
-                        value={password2}
-                     />
-                </div>
-                <button type="submit" className="ui teal button">Submit</button>
-            </form>
+                    />
+                </Form.Field>
+                <Form.Field>
+                    <input 
+                         placeholder="Conform Password" 
+                         type="password"
+                         name="password2" 
+                         value={password2}
+                         onChange={onChange}
+                    />
+                </Form.Field>
+                <Button type='submit' className="ui button teal ">Submit</Button>
+            </Form>
         </div>
     )
 }
