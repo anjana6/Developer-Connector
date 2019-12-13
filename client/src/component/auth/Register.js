@@ -1,5 +1,9 @@
 import React,{useState} from 'react';
 import { Button,Header,Form } from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
+// import {addData} from '../action';
+import {connect} from 'react-redux';
+import axios from 'axios';
 
 const Register = () => {
     const [formData,setFormData] = useState({name:'',email:'',password:'',password2: ''});
@@ -7,13 +11,36 @@ const Register = () => {
     const {name,email,password,password2} = formData;
 
     const onChange = (e) =>{
-        
+        setFormData({...formData,[e.target.name] : e.target.value})
     }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        if(password !== password2){
+            console.log("incorect");
+        }else{
+            console.log('success');
+            // console.log(formData);
+            // const newUser ={name,email,password};
+            // try {
+            //     const config = {
+            //         headers:{'Content-type':'application/json'}
+            //     }
+            //     const body = JSON.stringify(newUser);
+            //     // console.log(body,config);
+            //     const res = await axios.post('api/users',body,config);
+            //    console.log(res.data);
+
+            // } catch (error) {
+            //     console.error(error.response.data);
+            // }
+        }
+    };
     return (
         <div className="ui container">
             <Header as='h1' color='teal'>Sing Up</Header> 
             <Header as='h1' color='blue'><i className="fa fa-user"/>Create Your Account</Header>
-            <Form>
+            <Form onSubmit={onSubmit}>
                 <Form.Field>
                     <input 
                         placeholder='Name' 
@@ -32,6 +59,7 @@ const Register = () => {
                         onChange={onChange} 
                         required 
                     />
+                    <small>This site uses Gravater so if you want a profile image, use a Gravatar email.</small>
                 </Form.Field>
                 <Form.Field>
                     <input
@@ -53,8 +81,9 @@ const Register = () => {
                 </Form.Field>
                 <Button type='submit' className="ui button teal ">Submit</Button>
             </Form>
+            <p >All ready have an account?<Link to="/">Sing In</Link></p>
         </div>
     )
 }
 
-export default Register
+export default (Register);
