@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import { Button,Header,Form } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-// import {addData} from '../action';
+import {setAlert} from '../../action/alertAction';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-const Register = () => {
+const Register = ({setAlert}) => {
     const [formData,setFormData] = useState({name:'',email:'',password:'',password2: ''});
 
     const {name,email,password,password2} = formData;
@@ -17,7 +17,7 @@ const Register = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if(password !== password2){
-            console.log("incorect");
+            setAlert('Password do not match','danger');
         }else{
             console.log('success');
             // console.log(formData);
@@ -81,9 +81,9 @@ const Register = () => {
                 </Form.Field>
                 <Button type='submit' className="ui button teal ">Submit</Button>
             </Form>
-            <p >All ready have an account?<Link to="/">Sing In</Link></p>
+            <p >All ready have an account?<Link to="/login">Sing In</Link></p>
         </div>
     )
 }
 
-export default (Register);
+export default connect(null,{setAlert})(Register);

@@ -46,7 +46,7 @@ const Login = () => {
                 </Form.Field>
                 <Button type='submit' className="ui button teal ">Submit</Button>
             </Form>
-            <p >All ready have an account?<Link to="/">Sing In</Link></p>
+            <p >All ready have an account?<Link to="/register">Sing Up</Link></p>
         </div>
     )
 }
