@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import { Button,Header,Form } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {setAlert} from '../../action/alertAction';
 import {connect} from 'react-redux';
 import {register} from '../../action/authAction'
 
-const Register = ({setAlert,register}) => {
+const Register = ({setAlert,register,isAuthenticated}) => {
     const [formData,setFormData] = useState({name:'',email:'',password:'',password2: ''});
 
     const {name,email,password,password2} = formData;
@@ -22,6 +22,10 @@ const Register = ({setAlert,register}) => {
             register({name,email,password})
         }
     };
+
+    if(isAuthenticated){
+        return <Redirect to='/dashboard'/>
+    }
     return (
         <div className="ui container">
             <Header as='h1' color='teal'>Sing Up</Header> 
@@ -70,4 +74,9 @@ const Register = ({setAlert,register}) => {
     )
 }
 
-export default connect(null,{setAlert,register})(Register);
+const mapStateToProp = (state) =>({
+    isAuthenticated : state.auth.isAuthenticated
+});
+
+
+export default connect(mapStateToProp,{setAlert,register})(Register);

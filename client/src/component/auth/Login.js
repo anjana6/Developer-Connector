@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import { Button,Header,Form } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
-// import {addData} from '../action';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import axios from 'axios';
+import {login} from '../../action/authAction';
 
-const Login = () => {
+
+const Login = ({login,isAuthenticated}) => {
     const [formData,setFormData] = useState({name:'',email:'',password:'',password2: ''});
 
     const {email,password} = formData;
@@ -17,9 +17,13 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         
-            console.log('success');
-
+            login({email,password});
     };
+
+    if(isAuthenticated){
+        return <Redirect to="/dashboard"/>
+    }
+
     return (
         <div className="ui container">
             <Header as='h1' color='teal'>Sing In</Header> 
@@ -49,6 +53,13 @@ const Login = () => {
             <p >All ready have an account?<Link to="/register">Sing Up</Link></p>
         </div>
     )
-}
+};
 
-export default (Login);
+const mapStateToProp = (state) =>({
+    isAuthenticated : state.auth.isAuthenticated
+});
+
+
+
+export default connect(mapStateToProp,{login})(Login);
+ 
