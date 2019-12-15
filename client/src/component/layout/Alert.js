@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 
-const Alert = () =>{
+const Alert = ({ alerts }) =>{
     return(
-        <div>
+       
+        alerts !== null && alerts.length > 0 && alerts.map(alert => (
+            
+            <div key={alert.id} className={`ui container  alert alert-${alert.alertType}`}>
+                {alert.msg}
 
-        </div>
+            </div>
+           
+        ))
+        
+        
     )
 }
 
-export default connect()(Alert);
+const mapStateToProps = state =>({
+    alerts : state.alert
+});
+
+export default connect(mapStateToProps)(Alert);
