@@ -3,9 +3,9 @@ import { Button,Header,Form } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {setAlert} from '../../action/alertAction';
 import {connect} from 'react-redux';
-import axios from 'axios';
+import {register} from '../../action/authAction'
 
-const Register = ({setAlert}) => {
+const Register = ({setAlert,register}) => {
     const [formData,setFormData] = useState({name:'',email:'',password:'',password2: ''});
 
     const {name,email,password,password2} = formData;
@@ -19,21 +19,7 @@ const Register = ({setAlert}) => {
         if(password !== password2){
             setAlert('Password do not match','danger');
         }else{
-            console.log('success');
-            // console.log(formData);
-            // const newUser ={name,email,password};
-            // try {
-            //     const config = {
-            //         headers:{'Content-type':'application/json'}
-            //     }
-            //     const body = JSON.stringify(newUser);
-            //     // console.log(body,config);
-            //     const res = await axios.post('api/users',body,config);
-            //    console.log(res.data);
-
-            // } catch (error) {
-            //     console.error(error.response.data);
-            // }
+            register({name,email,password})
         }
     };
     return (
@@ -46,8 +32,7 @@ const Register = ({setAlert}) => {
                         placeholder='Name' 
                         name="name" 
                         value={name}
-                        onChange={onChange}
-                        required 
+                        onChange={onChange} 
                     />
                 </Form.Field>
                 <Form.Field>
@@ -57,7 +42,6 @@ const Register = ({setAlert}) => {
                         name="email" 
                         value={email}
                         onChange={onChange} 
-                        required 
                     />
                     <small>This site uses Gravater so if you want a profile image, use a Gravatar email.</small>
                 </Form.Field>
@@ -86,4 +70,4 @@ const Register = ({setAlert}) => {
     )
 }
 
-export default connect(null,{setAlert})(Register);
+export default connect(null,{setAlert,register})(Register);
