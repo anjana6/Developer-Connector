@@ -9,6 +9,7 @@ import Register from './component/auth/Register';
 import Alert from './component/layout/Alert';
 import Dashboard from './component/dashboard/Dashboard';
 import PrivetRout from './component/routing/PrivetRout';
+import CreateProfile from './component/profileForm/CreatePrfile';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ return(
         <Route path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <PrivetRout exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/create-profile' component={CreateProfile}/>
       </Switch>
     </Fragment>
   </Router>
