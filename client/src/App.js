@@ -7,7 +7,8 @@ import Landing from './component/layout/Landing';
 import Login from './component/auth/Login';
 import Register from './component/auth/Register';
 import Alert from './component/layout/Alert';
-
+import Dashboard from './component/dashboard/Dashboard';
+import PrivetRout from './component/routing/PrivetRout';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ return(
       <Switch>
         <Route path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
+        <PrivetRout exact path='/dashboard' component={Dashboard} />
       </Switch>
     </Fragment>
   </Router>
