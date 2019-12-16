@@ -9,6 +9,7 @@ const Navbar = ({logout,auths}) => {
 
   const authLink = (
     <Fragment>
+<Link to="/dashboard" className="item"><i className="fa fa-user"/>Dashboard</Link>
       <Link onClick={logout} to="#" className="active item"><i className ="fas fa-sign-out-alt"></i>Logout</Link>
     </Fragment>
   );
@@ -23,7 +24,7 @@ const Navbar = ({logout,auths}) => {
 );
   return (
     <div className="navbar ui menu secondary">
-    <Link to='/' className="item"><i className="fa fa-code"></i>Devconnecter</Link>  
+    <Link to='/' className="item">Devconnecter</Link>  
     <div className="right menu">
         <div className="item">
           {!auths.loading && (<Fragment>{auths.isAuthenticated? authLink : gestLink}</Fragment>)}
