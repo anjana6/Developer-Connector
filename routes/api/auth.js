@@ -21,12 +21,9 @@ router.post(
     "/",
     [
       check("email", "Please include a valid email").isEmail(),
-      check(
-        "password","password is required"
-      ).exists()
+      check("password","password is required").not().exists()
     ],
     async (req, res) => {
-      // console.log(req.body);
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -38,9 +35,7 @@ router.post(
         let user = await User.findOne({ email });
   
         if (!user) {
-          return res
-            .status(400)
-            .json({ errors: [{ msg: "Invalid credentials" }] });
+          return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
         }
   
         const isMatch = await bcrypt.compare(password,user.password);

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 const Alert = ({ alerts }) =>{
+    console.log(alerts);
     return(
        
         alerts !== null && alerts.length > 0 && alerts.map(alert => (
@@ -18,7 +19,8 @@ const Alert = ({ alerts }) =>{
 }
 
 const mapStateToProps = state =>({
-    alerts : state.alert
+     alerts : state.alert
+   
 });
 
 export default connect(mapStateToProps)(Alert);

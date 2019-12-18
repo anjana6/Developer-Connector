@@ -1,4 +1,5 @@
 import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from "../action/Type";
+import history from '../history';
 
 
 const initialState = {

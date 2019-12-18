@@ -36,7 +36,6 @@ const Login = ({login,isAuthenticated}) => {
                         name="email" 
                         value={email}
                         onChange={onChange} 
-                        required 
                     />
                 </Form.Field>
                 <Form.Field>
