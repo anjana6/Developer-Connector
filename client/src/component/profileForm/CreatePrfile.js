@@ -36,7 +36,7 @@ const CreateProfile = ({createProfile,history}) => {
     linkedin,
     youtube,
     instagram
-  } = FormData;
+  } = formData;
 
   const onChange = (e) =>{
     setFormData({...formData,[e.target.name]:e.target.value})
@@ -55,7 +55,7 @@ const CreateProfile = ({createProfile,history}) => {
         Let's get some information to make your profile stand out
       </Header>
       <small>* = required field</small>
-      <Form onSubmit={onSubmit}>
+      <Form >
       <Form.Field  control='select' name='status' value={status} onChange={onChange}>
         <option value='0'>Select Professional Status</option>
         <option value='Developer'>Developer</option>
@@ -162,10 +162,7 @@ const CreateProfile = ({createProfile,history}) => {
         
      
       </Fragment>) }
-       
-        
-      
-        <Button type='submit' className='ui button teal '>
+        <Button type='submit' className='ui button teal' onClick={onSubmit}>
           Submit
         </Button>
       </Form>
