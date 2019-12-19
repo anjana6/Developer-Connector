@@ -11,6 +11,8 @@ import Dashboard from './component/dashboard/Dashboard';
 import PrivetRout from './component/routing/PrivetRout';
 import CreateProfile from './component/profileForm/CreatePrfile';
 import EditProfile from './component/profileForm/EditProfile';
+import AddExpirence from './component/profileForm/AddExperience';
+import AddEducation from './component/profileForm/AddEducation';
 
 
 const App = () => {
@@ -26,6 +28,8 @@ return(
         <PrivetRout exact path='/dashboard' component={Dashboard} />
         <Route exact path='/create-profile' component={CreateProfile}/>
         <Route exact path='/edit-profile' component={EditProfile}/>
+        <Route exact path='/add-experience' component={AddExpirence}/>
+        <Route exact path='/add-education' component={AddEducation}/>
       </Switch>
     </Fragment>
   </Router>

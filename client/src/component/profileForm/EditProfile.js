@@ -46,7 +46,7 @@ const EditProfile = ({
         instagram: loading || !profile.social.instagram? '': profile.social.instagram,
         
       });
-  }, []);
+  }, [loading]);
 
   const {
     company,
@@ -69,7 +69,7 @@ const EditProfile = ({
   const onSubmit = e => {
     e.preventDefault();
     console.log(formData);
-    createProfile(formData, history);
+    createProfile(formData, history,true);
   };
   return (
     <div className='ui container'>
@@ -202,6 +202,7 @@ const EditProfile = ({
         <Button type='submit' className='ui button teal' onClick={onSubmit}>
           Submit
         </Button>
+        <Link to="/dashboard" className="ui button red">Go Back</Link>
       </Form>
     </div>
   );
