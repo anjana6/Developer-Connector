@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { Header, Form, Button, Input, Icon } from 'semantic-ui-react';
+import { Header, Form, Button } from 'semantic-ui-react';
 import { createProfile, getCurrentProfile } from '../../action/profileAction';
 
 const EditProfile = ({
@@ -46,7 +46,7 @@ const EditProfile = ({
         instagram: loading || !profile.social.instagram? '': profile.social.instagram,
         
       });
-  }, [loading]);
+  }, [loading,getCurrentProfile,profile]);
 
   const {
     company,

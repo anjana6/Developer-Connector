@@ -1,17 +1,17 @@
 import React,{ useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {getCurrentProfile} from '../../action/profileAction';
+import {getCurrentProfile, deleteAccount} from '../../action/profileAction';
 import Spinner from '../layout/Spinner';
-import { Header,Button } from 'semantic-ui-react';
+import { Header,Button,Icon } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import ActionDashboard from './ActionDashboard';
 import Experience from './Experience';
 import Education from './Education'
 
-const Dashboard = ({getCurrentProfile,profile :{profile,loading},auth:{user}}) => {
+const Dashboard = ({deleteAccount,getCurrentProfile,profile :{profile,loading},auth:{user}}) => {
     useEffect(() => {
         getCurrentProfile()
-    }, []);
+    }, [getCurrentProfile]);
     console.log(profile);
     return loading && profile === null? (<Spinner/>) : 
     (<Fragment>
@@ -23,6 +23,8 @@ const Dashboard = ({getCurrentProfile,profile :{profile,loading},auth:{user}}) =
                 <ActionDashboard/>
                 <Experience experience={profile.experience}/>
                 <Education education={profile.education}/>
+
+                <Button color='red' onClick={() =>deleteAccount()}> <Icon name='user delete' />Delete Account</Button>
             </Fragment>):
             (<Fragment>
                 <p>You have not yet setup a profile, please add some info</p>
@@ -37,4 +39,4 @@ const mapStateToProps = (state) =>({
     profile: state.profile
 })
 
-export default connect(mapStateToProps,{getCurrentProfile})(Dashboard);
+export default connect(mapStateToProps,{getCurrentProfile,deleteAccount})(Dashboard);

@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link,withRouter } from 'react-router-dom';  
-import { Header, Form, Button ,Input,Icon} from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';  
+import { Header, Form, Button} from 'semantic-ui-react';
 import {createProfile} from '../../action/profileAction';
 
 const CreateProfile = ({createProfile,history}) => {
