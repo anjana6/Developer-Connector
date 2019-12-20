@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import Moment from 'react-moment';
 import { Header,Table,Button } from 'semantic-ui-react';
+import {deleteExperience} from '../../action/profileAction';
+import { connect } from 'react-redux';
 
-const Experience = ({experience}) => {
+const Experience = ({experience,deleteExperience}) => {
 
     // if(experience.length){
     //     experience.map(exp => console.log(exp.title))
@@ -17,7 +19,7 @@ const Experience = ({experience}) => {
             <Table.Cell >
                 <Moment format='YYYY/MM/DD'>{exp.from}</Moment> - {exp.to === null? ('Now'):(<Moment format='YYYY/MM/DD'>{exp.to}</Moment>)}
             </Table.Cell>
-            <Table.Cell ><Button color='red'>Delete</Button></Table.Cell>
+            <Table.Cell ><Button color='red' onClick={() => deleteExperience(exp._id)}>Delete</Button></Table.Cell>
             
         </Table.Row>);
 
@@ -38,4 +40,4 @@ const Experience = ({experience}) => {
     )
 }
 
-export default Experience;
+export default connect(null,{deleteExperience})(Experience);

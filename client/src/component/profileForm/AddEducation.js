@@ -74,7 +74,7 @@ const AddEducation = ({addEducation,history}) => {
         <small>Give us an idea of where you are at in your career</small>
       </Form.Field>
       <Form.Field>
-      <Checkbox label='Current Job' name='current' onChange={() => {
+      <Checkbox label='Current School' name='current' onChange={() => {
           setFormData({...formData,current: !current} );
           toggleDisabled(!toDateDisabled);
       }}/>
