@@ -71,6 +71,7 @@ export const getGithubReposn = (username) => async dispatch => {
 
 
 export const createProfile = (formData,history, edit = false) => async dispatch => {
+  console.log(formData);
   try {
     const config = {
       headers: {

@@ -39,14 +39,14 @@ const EditProfile = ({
         skills: loading || !profile.skills? '': profile.skills,
         githubusername: loading || !profile.githubusername? '': profile.githubusername,
         bio: loading || !profile.bio? '': profile.bio,
-        twitter: loading || !profile.social.twitter? '': profile.social.twitter,
-        facebook: loading || !profile.social.facebook? '': profile.social.facebook,
-        linkedin: loading || !profile.social.linkedin? '': profile.social.linkedin,
-        youtube: loading || !profile.social.youtube? '': profile.social.youtube,
-        instagram: loading || !profile.social.instagram? '': profile.social.instagram,
+        // twitter: loading || !profile.social.twitter? '': profile.social.twitter,
+        // facebook: loading || !profile.social.facebook? '': profile.social.facebook,
+        // linkedin: loading || !profile.social.linkedin? '': profile.social.linkedin,
+        // youtube: loading || !profile.social.youtube? '': profile.social.youtube,
+        // instagram: loading || !profile.social.instagram? '': profile.social.instagram,
         
       });
-  }, [loading,getCurrentProfile,profile]);
+  }, [loading]);
 
   const {
     company,
@@ -81,7 +81,7 @@ const EditProfile = ({
         Let's get some information to make your profile stand out
       </Header>
       <small>* = required field</small>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Form.Field
           control='select'
           name='status'
@@ -199,7 +199,7 @@ const EditProfile = ({
           </Fragment>
         )}
 
-        <Button type='submit' className='ui button teal' onClick={onSubmit}>
+        <Button type='submit' className='ui button teal' >
           Submit
         </Button>
         <Link to="/dashboard" className="ui button red">Go Back</Link>

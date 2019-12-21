@@ -14,6 +14,7 @@ import EditProfile from './component/profileForm/EditProfile';
 import AddExpirence from './component/profileForm/AddExperience';
 import AddEducation from './component/profileForm/AddEducation';
 import Profiles from './component/profiles/Profiles';
+import Profile from './component/profile/Profile';
 
 
 const App = () => {
@@ -32,6 +33,7 @@ return(
         <Route exact path='/add-experience' component={AddExpirence}/>
         <Route exact path='/add-education' component={AddEducation}/>
         <Route exact path='/profiles' component={Profiles}/>
+        <Route exact path='/profile/:id' component={Profile}/>
       </Switch>
     </Fragment>
   </Router>
