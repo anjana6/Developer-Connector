@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES,GET_REPOS } from "../action/Type";
+import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES,GET_REPOS,GET_POST} from "../action/Type";
 
 
 
@@ -26,6 +26,10 @@ export default (state=initialState,action) =>{
         case GET_REPOS:
             return{
                 ...state,repos:payload,loading:false
+            }
+        case GET_POST:
+            return{
+                ...state,post:payload,loading:false
             }
         
         case PROFILE_ERROR:
