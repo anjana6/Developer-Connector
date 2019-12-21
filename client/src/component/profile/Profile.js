@@ -3,10 +3,11 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getProfileById} from '../../action/profileAction';
 import Spinner from '../layout/Spinner';
-import {Button} from 'semantic-ui-react';
+import {Button,Header, Card} from 'semantic-ui-react';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
-
+import ProfileExperience from './ProfileExperience';
+import ProfileEducation from './ProfileEducation';
 
 const Profile = ({getProfileById,profile:{profile,loading},match,auth}) => {
     useEffect(() => {
@@ -23,6 +24,29 @@ const Profile = ({getProfileById,profile:{profile,loading},match,auth}) => {
                 <div className="ui container">
                     <ProfileTop profile={profile}/>
                     <ProfileAbout profile={profile}/>
+
+                    <Header as='h2'>Experience</Header>
+                    {profile.experience.length >0? (
+
+                        <Fragment>
+                            <Card.Group>
+                            <Card>
+                            {profile.experience.map(experience =>(
+                                <ProfileExperience key={experience._id} experience={experience}/>
+                            ))}
+                            </Card>
+                            </Card.Group>
+                        </Fragment>
+                    ) :(<Header>No experience credentials</Header>)}
+
+                    <Header as='h2'>Education</Header>
+                    {profile.education.length >0? (
+                        <Fragment>
+                            {profile.education.map(education =>(
+                                <ProfileEducation key={education._id} education={education}/>
+                            ))}
+                        </Fragment>
+                    ) :(<Header>No experience credentials</Header>)}
                 </div>
             </Fragment>}
             </div>
