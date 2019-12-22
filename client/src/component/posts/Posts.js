@@ -18,13 +18,13 @@ import CommentForm from '../post/CommentForm';
     return ( loading?
         <Spinner/> : (<Fragment>
             <div className='ui container'>
-            <Header>Post</Header>
-            <p><Icon name='user'/>Welcome to the commnunity</p>
-            <PostForm/>
-        <div>{posts.map(post => (
-            <PostItem key={post._id} post={post}/>
-        ))}</div>
-        </div>
+                <Header>Post</Header>
+                <p><Icon name='user'/>Welcome to the commnunity</p>
+                <PostForm/>
+                <div>{posts.map(post => (
+                    <PostItem key={post._id} post={post}/>
+                ))}</div>
+            </div> 
         </Fragment>)
     )
 }

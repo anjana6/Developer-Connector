@@ -7,9 +7,9 @@ import {addLikes,removeLikes,deletePost} from '../../action/PostAction';
 
 const PostItem = ({post:{_id,text,name,avatar,user,likes,comment,date},auth,addLikes,removeLikes,deletePost,showActions}) => {
     return (
-        <div>
+        <div className='ui container'>
             <div> 
-                <Link to='profile.html'><Image src={avatar}/><Header>{name}</Header></Link>
+                <Link to={`profile/${user}`}><Image src={avatar}/><Header>{name}</Header></Link>
             </div>
             <div>
                 <p>{text}</p>
@@ -24,7 +24,7 @@ const PostItem = ({post:{_id,text,name,avatar,user,likes,comment,date},auth,addL
                         <Button color='teal' onClick={e => deletePost(_id)}><Icon name='times'/></Button>
                     )}
                 </Fragment>}
-                
+                 
 
             </div>
         </div>

@@ -1,4 +1,4 @@
-import {GET_POSTS,POST_ERROR,UPDATE_LIKES, DELETE_POST,ADD_POST,ADD_COMMENT,REMOVE_COMMENT} from '../action/Type';
+import {GET_POSTS,POST_ERROR,UPDATE_LIKES, DELETE_POST,ADD_POST,GET_POST,ADD_COMMENT,REMOVE_COMMENT} from '../action/Type';
 
 const initialState = {
     posts:[],
@@ -9,11 +9,16 @@ const initialState = {
 
 export default (state=initialState,action) => {
     const {type,payload} = action;
+    console.log(payload);
 
     switch(type) {
         case GET_POSTS:
             return {
                 ...state,posts:payload,loading:false
+            };
+        case GET_POST:
+            return{
+                ...state,post:payload,loading:false
             };
         case POST_ERROR:
             return {
@@ -26,7 +31,7 @@ export default (state=initialState,action) => {
             };
         case ADD_POST:
             return{
-                ...state,posts:[...state.posts,payload],loading:false 
+                ...state,posts:[payload,...state.posts],loading:false 
             }
         case DELETE_POST:
             return{
@@ -35,11 +40,11 @@ export default (state=initialState,action) => {
             }
         case ADD_COMMENT:
             return {
-                ...state,post:{...state.post,comments:payload},loading:false
+                ...state,post:{...state.post,comment:payload},loading:false
             }  
         case REMOVE_COMMENT:
             return{
-                ...state,post:{...state.post,comments:state.post.commment.filter(comment => comment._id !== payload)},loading:false
+                ...state,post:{...state.post,comment:state.post.commment.filter(comment => comment._id !== payload)},loading:false
             }  
             default:
                 return state; 

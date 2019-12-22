@@ -8,7 +8,7 @@ export const getPosts = () =>async dispatch =>{
         const res = await axios.get('/api/post');
 
         dispatch({
-            type:GET_POSTS,
+            type:GET_POSTS, 
             payload:res.data
         });
     } catch (err) {
@@ -112,6 +112,7 @@ export const getPost = (id) =>async dispatch =>{
     
     try {
         const res = await axios.get(`/api/post/${id}`);
+        // console.log(res.data);
 
         dispatch({
             type:GET_POST,
@@ -156,9 +157,9 @@ export const addComment = (postId,formData) =>async dispatch =>{
 }
 
 export const removeComment = (postId,commentId) =>async dispatch =>{
-    
+
     try {
-        const res = await axios.delete(`/api/post/comment/${postId}/${commentId}`);
+         await axios.delete(`/api/post/comment/${postId}/${commentId}`);
 
         dispatch({
             type:REMOVE_COMMENT,
